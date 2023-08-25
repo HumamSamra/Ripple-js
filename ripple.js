@@ -1,4 +1,4 @@
-  document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() {
         const all = document.querySelectorAll(".ripple");
         
         all.forEach(function (ev) {
@@ -16,12 +16,12 @@
                 ripple.style.position = 'absolute';
 
                 ripple.style.borderRadius = '50%';
-                ripple.style.width = '20px';
+                ripple.style.width = '0px';
 
-                ripple.style.height = '20px';
+                ripple.style.height = '0px';
                 ripple.style.transform = 'translate(-50%, -50%)';
 
-                ripple.style.opacity = ev.getAttribute('ripple-opacity') ?? '0.3';
+                ripple.style.opacity = ev.getAttribute('ripple-opacity') ?? '0.4';
                 ripple.style.background = ev.getAttribute('ripple-color') ?? 'black';
 
                 ripple.style.left = `${x}px`;
@@ -33,11 +33,11 @@
 
                 ripple.animate(
                     [
-                        { width: size * 3 + 'px', height: size * 3 + 'px' },
+                        { width: size * 2 + 'px', height: size * 2 + 'px' },
                     ],
                     {
-                        duration: 400,
-                        easing: "ease-in-out",
+                        duration: 800,
+                        easing: "cubic-bezier(.23,.03,.3,.99)",
                         fill: "forwards"
                     });
 
@@ -47,7 +47,7 @@
                             { opacity: '0' },
                         ],
                         {
-                            duration: 600,
+                            duration: 500,
                             easing: "ease",
                             fill: "forwards"
                         });
@@ -62,7 +62,7 @@
                             { opacity: '0' },
                         ],
                         {
-                            duration: 600,
+                            duration: 500,
                             easing: "ease",
                             fill: "forwards"
                         });
