@@ -16,12 +16,12 @@
                 ripple.style.position = 'absolute';
 
                 ripple.style.borderRadius = '50%';
-                ripple.style.width = '0';
+                ripple.style.width = '20px';
 
-                ripple.style.height = '0';
+                ripple.style.height = '20px';
                 ripple.style.transform = 'translate(-50%, -50%)';
 
-                ripple.style.opacity = ev.getAttribute('ripple-opacity') ?? '0.5';
+                ripple.style.opacity = ev.getAttribute('ripple-opacity') ?? '0.3';
                 ripple.style.background = ev.getAttribute('ripple-color') ?? 'black';
 
                 ripple.style.left = `${x}px`;
@@ -36,8 +36,8 @@
                         { width: size * 3 + 'px', height: size * 3 + 'px' },
                     ],
                     {
-                        duration: 600,
-                        easing: "cubic-bezier(.85,-0.01,.35,.99)",
+                        duration: 400,
+                        easing: "ease-in-out",
                         fill: "forwards"
                     });
 
