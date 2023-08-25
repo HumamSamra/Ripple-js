@@ -24,8 +24,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 ripple.style.opacity = ev.getAttribute('ripple-opacity') ?? '0.4';
                 ripple.style.background = ev.getAttribute('ripple-color') ?? 'black';
 
-                ripple.style.left = `${x}px`;
-                ripple.style.top = `${y}px`;
+                if(ev.hasAttribute('ripple-center')){
+                    ripple.style.left = '50%';
+                    ripple.style.top = '50%';
+                }else{
+                    ripple.style.left = `${x}px`;
+                    ripple.style.top = `${y}px`;
+                }
 
                 ev.appendChild(ripple);
 
