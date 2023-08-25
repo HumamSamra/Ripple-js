@@ -36,8 +36,8 @@
                         { width: size * 3 + 'px', height: size * 3 + 'px' },
                     ],
                     {
-                        duration: 1500,
-                        easing: "ease",
+                        duration: 600,
+                        easing: "cubic-bezier(.85,-0.01,.35,.99)",
                         fill: "forwards"
                     });
 
@@ -47,13 +47,13 @@
                             { opacity: '0' },
                         ],
                         {
-                            duration: 800,
+                            duration: 600,
                             easing: "ease",
                             fill: "forwards"
                         });
                     anim.onfinish = setTimeout(() => {
                         ripple.remove();
-                    }, 800);
+                    }, 500);
                 });
 
                 ev.addEventListener("mouseleave", function () {
@@ -62,13 +62,13 @@
                             { opacity: '0' },
                         ],
                         {
-                            duration: 800,
+                            duration: 600,
                             easing: "ease",
                             fill: "forwards"
                         });
-                    anim.onfinish = setTimeout(() => {
-                        ripple.remove();
-                    }, 800);
+                        anim.onfinish = setTimeout(() => {
+                            ripple.remove();
+                        }, 500);
                 });
             });
         });
