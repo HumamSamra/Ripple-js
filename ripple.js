@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
             ripple.style.width = '0px';
             ripple.style.height = '0px';
 
-            ripple.style.opacity = rippleElement.getAttribute('data-ripple-opacity') || '0.1';
+            ripple.style.opacity = rippleElement.getAttribute('data-ripple-opacity') || '0.2';
             ripple.style.backgroundColor = rippleElement.getAttribute('data-ripple-color') || '#000';
 
             if (rippleElement.hasAttribute('data-ripple-center')) {
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 ],
                 {
                     duration: 300,
-                    easing: "cubic-bezier(0,.7,.4,.99)",
+                    easing: "cubic-bezier(0,.71,.41,1)",
                     fill: "forwards"
                 });
 
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         { opacity: '0' },
                     ],
                     {
-                        duration: 150,
+                        duration: 250,
                         easing: "ease",
                         fill: "forwards"
                     });
