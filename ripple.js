@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 ],
                 {
                     duration: 300,
-                    easing: "ease",
+                    easing: "cubic-bezier(0,.7,.4,.99)",
                     fill: "forwards"
                 });
 
