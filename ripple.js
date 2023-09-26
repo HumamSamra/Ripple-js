@@ -8,41 +8,52 @@ function tclick(element, onclick) {
     onclick.call(this, e);
   });
 }
+
 document.addEventListener("DOMContentLoaded", function () {
     const allRippleElements = document.querySelectorAll(".ripple");
 
     allRippleElements.forEach(function (rippleElement) {
-        rippleElement.style.overflow = 'hidden';
+        rippleElement.style.overflow = 'visible';
         rippleElement.style.position = 'relative';
+        
         rippleElement.style.cursor = 'pointer';
         rippleElement.setAttribute('draggable', false);
 
-tclick(rippleElement, (ev) => {
+        tclick(rippleElement, (ev) => {
             createRipple(ev, true);
         });
-
+        
+        const rect = rippleElement.getBoundingClientRect();
         function createRipple(event, touch) {
             const ripple = document.createElement("span");
-            const rect = rippleElement.getBoundingClientRect();
+            
             var x = 0;
             var y = 0;
 
-  if (event.touches) {
+            if (event.touches) {
                 x = event.touches[0].pageX - rect.left;
                 y = event.touches[0].pageY - rect.top;
             } else {
                 x = event.clientX - rect.left;
                 y = event.clientY - rect.top;
+                
             }
-
-            let size = Math.sqrt(rippleElement.clientHeight * rippleElement.clientHeight + rippleElement.clientWidth * rippleElement.clientWidth) * 2;
+            
+            var size = Math.max(
+              (Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2))),
+              (Math.sqrt(Math.pow(rect.width - x, 2) + Math.pow(y, 2))),
+              (Math.sqrt(Math.pow(rect.width - x, 2) + Math.pow(rect.height - y, 2))),
+              (Math.sqrt(Math.pow(x, 2) + Math.pow(rect.height - y, 2)))
+            ) * 2;
 
             ripple.style.position = 'absolute';
             ripple.style.pointerEvents = 'none';
+            
             ripple.style.borderRadius = '50%';
             ripple.style.transform = 'translate(-50%, -50%)';
-            ripple.style.width = size / 4 + 'px';
-            ripple.style.height = size / 4 + 'px';
+            
+            ripple.style.width = '0px';
+            ripple.style.height = '0px';
 
             ripple.style.opacity = rippleElement.getAttribute('data-ripple-opacity') || '0.1';
             ripple.style.backgroundColor = rippleElement.getAttribute('data-ripple-color') || '#000';
@@ -57,38 +68,41 @@ tclick(rippleElement, (ev) => {
 
             rippleElement.appendChild(ripple);
 
-            ripple.animate(
+            let anim = ripple.animate(
                 [
                     { width: size + 'px', height: size + 'px' },
                 ],
                 {
-                    duration: 600,
-                    easing: "cubic-bezier(0,0,0.2,1)",
+                    duration: 300,
+                    easing: "ease",
                     fill: "forwards"
                 });
 
             function removeRipple() {
-                let fadeOutAnimation = ripple.animate(
+                
+                anim.finished.then(() => {
+    let fadeOutAnimation = ripple.animate(
                     [
                         { opacity: '0' },
                     ],
                     {
-                        duration: 300,
-                        easing: "cubic-bezier(0,.38,.47,1)",
+                        duration: 150,
+                        easing: "ease",
                         fill: "forwards"
                     });
 
                 fadeOutAnimation.onfinish = function () {
                     ripple.remove();
                 };
+});
             }
 
-            rippleElement.addEventListener("mouseup", removeRipple);
-            rippleElement.addEventListener("mouseleave", removeRipple);
-
-            if (touch === true) {
+            if (event.touches) {
                 rippleElement.addEventListener("touchend", removeRipple);
                 rippleElement.addEventListener("touchcancel", removeRipple);
+            }else{
+                rippleElement.addEventListener("mouseup", removeRipple);
+                rippleElement.addEventListener("mouseleave", removeRipple);
             }
         }
     });
