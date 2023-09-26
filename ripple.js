@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const allRippleElements = document.querySelectorAll(".ripple");
 
     allRippleElements.forEach(function (rippleElement) {
-        rippleElement.style.overflow = 'visible';
+        rippleElement.style.overflow = 'hidden';
         rippleElement.style.position = 'relative';
         
         rippleElement.style.cursor = 'pointer';
