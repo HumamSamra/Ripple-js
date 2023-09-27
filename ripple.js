@@ -2,7 +2,6 @@ function tclick(element, onclick) {
   element.addEventListener('touchstart', function (e) {
     onclick.call(this, e);
     e.stopPropagation();
-    e.preventDefault(); 
   });
 
   element.addEventListener('mousedown', function (e) {
