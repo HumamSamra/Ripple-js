@@ -1,13 +1,15 @@
 function tclick(element, onclick) {
+var touchable = true;
   element.addEventListener('touchstart', function (e) {
-    onclick.call(this, e);
-    e.stopPropagation();
+touchable = false;    
+onclick.call(this, e);
   });
 
   element.addEventListener('mousedown', function (e) {
-if(e.button === 0) {
+if(e.button === 0 && touchable) {
     onclick.call(this, e);
 }
+touchable = true;
   });
 }
 
