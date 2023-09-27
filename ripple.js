@@ -27,8 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
         function createRipple(event, touch) {
             const ripple = document.createElement("span");
             
-            var x = 0;
-            var y = 0;
+            var x = 0, 
+		   y = 0;
 
             if (event.touches) {
                 x = event.touches[0].pageX - rect.left;
@@ -52,8 +52,8 @@ document.addEventListener("DOMContentLoaded", function () {
             ripple.style.borderRadius = '50%';
             ripple.style.transform = 'translate(-50%, -50%)';
             
-            ripple.style.width = '0px';
-            ripple.style.height = '0px';
+            ripple.style.width = `0px`;
+            ripple.style.height = `0px`;
 
             ripple.style.opacity = rippleElement.getAttribute('data-ripple-opacity') || '0.2';
             ripple.style.backgroundColor = rippleElement.getAttribute('data-ripple-color') || '#000';
@@ -73,8 +73,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     { width: size + 'px', height: size + 'px' },
                 ],
                 {
-                    duration: 300,
-                    easing: "cubic-bezier(0,.71,.41,1)",
+                    duration: 355,
+                    easing: "cubic-bezier(0,.47,.45,1)",
                     fill: "forwards"
                 });
 
