@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     allRippleElements.forEach(function (rippleElement) {
         rippleElement.style.overflow = 'hidden';
         rippleElement.style.position = 'relative';
+	rippleElement.style.webkitTapHighlightColor= 'transparent';
         
         rippleElement.style.cursor = 'pointer';
         rippleElement.setAttribute('draggable', false);
