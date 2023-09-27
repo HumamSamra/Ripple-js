@@ -5,7 +5,9 @@ function tclick(element, onclick) {
   });
 
   element.addEventListener('mousedown', function (e) {
+if(e.button === 0) {
     onclick.call(this, e);
+}
   });
 }
 
