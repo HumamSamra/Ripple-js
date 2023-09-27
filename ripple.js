@@ -22,11 +22,11 @@ document.addEventListener("DOMContentLoaded", function () {
         tclick(rippleElement, (ev) => {
             createRipple(ev, true);
         });
-        
-        const rect = rippleElement.getBoundingClientRect();
+                
         function createRipple(event, touch) {
             const ripple = document.createElement("span");
-            
+            const rect = rippleElement.getBoundingClientRect();
+
             var x = 0, 
 		   y = 0;
 
