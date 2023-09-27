@@ -2,6 +2,7 @@ function tclick(element, onclick) {
   element.addEventListener('touchstart', function (e) {
     onclick.call(this, e);
     e.stopPropagation();
+    e.preventDefault(); 
   });
 
   element.addEventListener('mousedown', function (e) {
@@ -22,10 +23,10 @@ document.addEventListener("DOMContentLoaded", function () {
         rippleElement.setAttribute('draggable', false);
 
         tclick(rippleElement, (ev) => {
-            createRipple(ev, true);
+            createRipple(ev);
         });
                 
-        function createRipple(event, touch) {
+        function createRipple(event,) {
             const ripple = document.createElement("span");
             const rect = rippleElement.getBoundingClientRect();
 
