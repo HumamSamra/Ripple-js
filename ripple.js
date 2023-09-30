@@ -1,3 +1,5 @@
+// This package is owned by nafha, and it's not free to use.
+
 const selector = ".ripple";
 
 function tclick(element, onclick) {
