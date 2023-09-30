@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
             function removeRipple() {
                 
                 anim.finished.then(() => {
-    let fadeOutAnimation = ripple.animate(
+    let fadeOutAnimation = container.animate(
                     [
                         { opacity: '0' },
                     ],
@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     });
 
                 fadeOutAnimation.onfinish = function () {
-                    ripple.remove();
+                    container.remove();
                 };
 });
             }
