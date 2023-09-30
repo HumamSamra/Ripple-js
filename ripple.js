@@ -8,7 +8,7 @@ onclick.call(this, e);
   });
 
   element.addEventListener('mousedown', function (e) {
-if(e.button === 0 && touchable) {
+if(touchable) {
     onclick.call(this, e);
 }
 touchable = true;
@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
           position: relative;
           -webkit-tap-highlight-color: transparent;
           cursor: pointer;
+          user-select:none;
         `;
         rippleElement.setAttribute('draggable', false);
 
