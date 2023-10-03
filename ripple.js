@@ -34,11 +34,15 @@ document.addEventListener("DOMContentLoaded", function () {
         });
                 
         function createRipple(event,) {
+            var centered = false;
+            if(rippleElement.hasAttribute('rpl-center')){
+              centered = true;
+            }
             const ripple = document.createElement("span");
             const rect = rippleElement.getBoundingClientRect();
 
             var x = 0, 
-		   y = 0;
+		        y = 0;
 
             if (event.touches) {
                 x = event.touches[0].pageX - rect.left;
@@ -48,13 +52,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 y = event.clientY - rect.top;
                 
             }
+            var size;
             
-            var size = Math.max(
+            if(!centered){
+             size = Math.max(
               (Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2))),
               (Math.sqrt(Math.pow(rect.width - x, 2) + Math.pow(y, 2))),
               (Math.sqrt(Math.pow(rect.width - x, 2) + Math.pow(rect.height - y, 2))),
               (Math.sqrt(Math.pow(x, 2) + Math.pow(rect.height - y, 2)))
             ) * 2;
+            }else{
+              size = Math.sqrt(rippleElement.clientHeight *
+              rippleElement.clientHeight + rippleElement.clientWidth *
+              rippleElement.clientWidth);
+            }
 
             ripple.style.position = 'absolute';
             ripple.style.pointerEvents = 'none';
@@ -62,13 +73,13 @@ document.addEventListener("DOMContentLoaded", function () {
             ripple.style.borderRadius = '50%';
             ripple.style.transform = 'translate(-50%, -50%)';
             
-            ripple.style.width = `0px`;
-            ripple.style.height = `0px`;
+            ripple.style.width = `${size/4}px`;
+            ripple.style.height = `${size/4}px`;
 
             ripple.style.opacity = rippleElement.getAttribute('rpl-opacity') || '0.2';
             ripple.style.backgroundColor = rippleElement.getAttribute('rpl-color') || '#000';
 
-            if (rippleElement.hasAttribute('rpl-center')) {
+            if (centered) {
                 ripple.style.left = '50%';
                 ripple.style.top = '50%';
             } else {
@@ -96,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     { width: size + 'px', height: size + 'px' },
                 ],
                 {
-                    duration: 255,
+                    duration: 225,
                     easing: "cubic-bezier(0,.47,.45,1)",
                     fill: "forwards"
                 });
