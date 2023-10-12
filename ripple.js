@@ -1,4 +1,4 @@
-// This package is owned by nafha, and it's not free to use.
+  // This package is owned by nafha, and it's not free to use.
 
 const selector = ".ripple";
 
@@ -73,10 +73,10 @@ document.addEventListener("DOMContentLoaded", function () {
             ripple.style.borderRadius = '50%';
             ripple.style.transform = 'translate(-50%, -50%)';
             
-            ripple.style.width = `${size/4}px`;
-            ripple.style.height = `${size/4}px`;
+            ripple.style.width = `0px`;
+            ripple.style.height = `0px`;
 
-            ripple.style.opacity = rippleElement.getAttribute('rpl-opacity') || '0.2';
+            ripple.style.opacity = rippleElement.getAttribute('rpl-opacity') || '0.3';
             ripple.style.backgroundColor = rippleElement.getAttribute('rpl-color') || '#000';
 
             if (centered) {
@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 ],
                 {
                     duration: 225,
-                    easing: "cubic-bezier(0,.47,.45,1)",
+                    easing: "ease",
                     fill: "forwards"
                 });
 
@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         { opacity: '0' },
                     ],
                     {
-                        duration: 250,
+                        duration: 300,
                         easing: "ease",
                         fill: "forwards"
                     });
