@@ -1,20 +1,20 @@
-  // This package is owned by nafha, and it's not free to use.
+// This package is owned by Wutodo on Github, and it's not free to use.
 
 const selector = ".ripple";
 
 function tclick(element, onclick) {
-var touchable = true;
-  element.addEventListener('touchstart', function (e) {
-touchable = false;    
-onclick.call(this, e);
-  });
+    var touchable = true;
+    element.addEventListener('touchstart', function (e) {
+        touchable = false;
+        onclick.call(this, e);
+    });
 
-  element.addEventListener('mousedown', function (e) {
-if(touchable) {
-    onclick.call(this, e);
-}
-touchable = true;
-  });
+    element.addEventListener('mousedown', function (e) {
+        if (touchable) {
+            onclick.call(this, e);
+        }
+        touchable = true;
+    });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -32,17 +32,17 @@ document.addEventListener("DOMContentLoaded", function () {
         tclick(rippleElement, (ev) => {
             createRipple(ev);
         });
-                
+
         function createRipple(event,) {
             var centered = false;
-            if(rippleElement.hasAttribute('rpl-center')){
-              centered = true;
+            if (rippleElement.hasAttribute('rpl-center')) {
+                centered = true;
             }
             const ripple = document.createElement("span");
             const rect = rippleElement.getBoundingClientRect();
 
-            var x = 0, 
-		        y = 0;
+            var x = 0,
+                y = 0;
 
             if (event.touches) {
                 x = event.touches[0].pageX - rect.left;
@@ -50,29 +50,29 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
                 x = event.clientX - rect.left;
                 y = event.clientY - rect.top;
-                
+
             }
             var size;
-            
-            if(!centered){
-             size = Math.max(
-              (Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2))),
-              (Math.sqrt(Math.pow(rect.width - x, 2) + Math.pow(y, 2))),
-              (Math.sqrt(Math.pow(rect.width - x, 2) + Math.pow(rect.height - y, 2))),
-              (Math.sqrt(Math.pow(x, 2) + Math.pow(rect.height - y, 2)))
-            ) * 2;
-            }else{
-              size = Math.sqrt(rippleElement.clientHeight *
-              rippleElement.clientHeight + rippleElement.clientWidth *
-              rippleElement.clientWidth);
+
+            if (!centered) {
+                size = Math.max(
+                    (Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2))),
+                    (Math.sqrt(Math.pow(rect.width - x, 2) + Math.pow(y, 2))),
+                    (Math.sqrt(Math.pow(rect.width - x, 2) + Math.pow(rect.height - y, 2))),
+                    (Math.sqrt(Math.pow(x, 2) + Math.pow(rect.height - y, 2)))
+                ) * 2;
+            } else {
+                size = Math.sqrt(rippleElement.clientHeight *
+                    rippleElement.clientHeight + rippleElement.clientWidth *
+                    rippleElement.clientWidth);
             }
 
             ripple.style.position = 'absolute';
             ripple.style.pointerEvents = 'none';
-            
+
             ripple.style.borderRadius = '50%';
             ripple.style.transform = 'translate(-50%, -50%)';
-            
+
             ripple.style.width = `0px`;
             ripple.style.height = `0px`;
 
@@ -87,9 +87,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 ripple.style.top = `${y}px`;
             }
 
-           
- var container = document.createElement('span');
-          container.style.cssText = `
+
+            var container = document.createElement('span');
+            container.style.cssText = `
               border-radius: inherit;
     position: absolute;
     width: 100%;
@@ -99,8 +99,8 @@ document.addEventListener("DOMContentLoaded", function () {
     overflow: hidden;
     pointer-events: none;
           `;
-          container.appendChild(ripple);
-          rippleElement.appendChild(container);
+            container.appendChild(ripple);
+            rippleElement.appendChild(container);
 
             let anim = ripple.animate(
                 [
@@ -108,33 +108,33 @@ document.addEventListener("DOMContentLoaded", function () {
                 ],
                 {
                     duration: 225,
-                    easing: "ease",
+                    easing: "cubic-bezier(0,.58,.32,.99)",
                     fill: "forwards"
                 });
 
             function removeRipple() {
-                
-                anim.finished.then(() => {
-    let fadeOutAnimation = container.animate(
-                    [
-                        { opacity: '0' },
-                    ],
-                    {
-                        duration: 300,
-                        easing: "ease",
-                        fill: "forwards"
-                    });
 
-                fadeOutAnimation.onfinish = function () {
-                    container.remove();
-                };
-});
+                anim.finished.then(() => {
+                    let fadeOutAnimation = container.animate(
+                        [
+                            { opacity: '0' },
+                        ],
+                        {
+                            duration: 300,
+                            easing: "ease",
+                            fill: "forwards"
+                        });
+
+                    fadeOutAnimation.onfinish = function () {
+                        container.remove();
+                    };
+                });
             }
 
             if (event.touches) {
                 rippleElement.addEventListener("touchend", removeRipple);
                 rippleElement.addEventListener("touchcancel", removeRipple);
-            }else{
+            } else {
                 rippleElement.addEventListener("mouseup", removeRipple);
                 rippleElement.addEventListener("mouseleave", removeRipple);
             }
