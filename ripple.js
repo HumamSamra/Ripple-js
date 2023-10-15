@@ -45,8 +45,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 y = 0;
 
             if (event.touches) {
-                x = event.touches[0].pageX - rect.left;
-                y = event.touches[0].pageY - rect.top;
+                x = event.touches[0].clientX - rect.left;
+                y = event.touches[0].clientY - rect.top;
             } else {
                 x = event.clientX - rect.left;
                 y = event.clientY - rect.top;
