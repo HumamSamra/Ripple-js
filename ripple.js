@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const allRippleElements = document.querySelectorAll(selector);
 
     allRippleElements.forEach(function (rippleElement) {
-        rippleElement.style.cssText = `
-          position: relative;
+        rippleElement.style.cssText += `
+           position: relative;
           -webkit-tap-highlight-color: transparent;
           cursor: pointer;
           user-select:none;
