@@ -20,16 +20,19 @@ Then you can just simply use the class `.ripple` on any element, and you're good
 Or You can [Download](https://github.com/WuToDo/Ripple/archive/refs/heads/main.zip) The package from here.
 
 ## Properties :
-You can use `rpl-color` for Ripple color, And `rpl-opacity` for the opacity.
+You can use `rpl-color` for Ripple color, It accepts any color type just like any css color property,
+And `rpl-opacity` for the opacity.
+<br />
 <br />
 ***Note: Opacity is between [ 0.0 - 1 ]***
 
 ![image](https://github.com/WuToDo/Ripple/assets/75528637/5acf7a6e-133c-4639-aa3d-8a099371b5be)
 <br/>
+<br/>
 Example:
 <br/>
 ```
-<a class="ripple" rpl-color="red" rpl-opacity="0.4" href="#">
+<a class="ripple" rpl-color="black" rpl-opacity="0.3" href="#">
   <i class="arrow-up"></i>
   Next
 </a>
