@@ -16,6 +16,8 @@ First include the script :
 <script src="https://wutodo.github.io/ripple/ripple.min.js"></script>
 ```
 Then you can just simply use the class `.ripple` on any element, and you're good to go.
+<br/>
+Or You can [Download](https://github.com/WuToDo/Ripple/archive/refs/heads/main.zip) The package from here.
 
 ## Properties :
 You can use `rpl-color` for Ripple color, And `rpl-opacity` for the opacity.
