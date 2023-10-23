@@ -1,4 +1,8 @@
-// This package is owned by Wutodo on Github, and it's not free to use.
+/*!
+  * Ripple js v1.0.0 (https://wutodo.github.io/ripple/)
+  * Copyright 2022-2023 The Ripple js Author (WuToDo)
+  * Licensed under MIT (https://github.com/WuToDo/Ripple/blob/main/LICENSE)
+  */
 
 const selector = ".ripple";
 
