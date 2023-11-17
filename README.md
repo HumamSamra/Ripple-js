@@ -3,7 +3,7 @@
 # Ripple
 **Ripple** effect using vanilla javascript.
 
-This package provides you with ripple effect, you can either use it on buttons or any other element.
+This package provides you a simple ripple effect, you can either use it on buttons or any other element.
 <br/>
 Please Make sure to check our website for demos and more info.
 
