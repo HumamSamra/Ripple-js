@@ -10,7 +10,7 @@ This package provides you a simple ripple effect, you can either use it on butto
 First include the script,
 Then you can just simply use the class `.ripple` on any element, and you're good to go.
 <br/>
-Or You can [Download](https://github.com/WuToDo/Ripple/archive/refs/heads/main.zip) The package from here.
+You can [Download](https://github.com/WuToDo/Ripple/archive/refs/heads/main.zip) The package from here.
 
 ## Properties :
 You can use `rpl-color` for Ripple color, It accepts any color type just like any css color property,
