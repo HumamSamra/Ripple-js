@@ -5,16 +5,9 @@
 
 This package provides you a simple ripple effect, you can either use it on buttons or any other element.
 <br/>
-Please Make sure to check our website for demos and more info.
-
-[Home](https://wutodo.github.io/ripple) | [Docs](https://wutodo.github.io/ripple/docs) | [Demos](https://wutodo.github.io/ripple/demos)
 
 ## Usage :
-First include the script :
-<br />
-```
-<script src="https://wutodo.github.io/ripple/ripple.min.js"></script>
-```
+First include the script,
 Then you can just simply use the class `.ripple` on any element, and you're good to go.
 <br/>
 Or You can [Download](https://github.com/WuToDo/Ripple/archive/refs/heads/main.zip) The package from here.
@@ -42,4 +35,3 @@ Example:
   This is a button
 </button>
 ```
-***Please read the [Documentation](https://wutodo.github.io/ripple/docs) for more info.***
