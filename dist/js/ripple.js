@@ -1,19 +1,20 @@
 /*!
-  * Ripple js v1.0.0 (https://wutodo.github.io/ripple/)
-  * Copyright 2022-2023 The Ripple js Author (WuToDo)
-  * Licensed under MIT (https://github.com/WuToDo/Ripple/blob/main/LICENSE)
-  */
+ * Ripple js v1.0.0 (https://wutodo.github.io/ripple/)
+ * Copyright 2022-2023 The Ripple js Author (WuToDo)
+ * Licensed under MIT (https://github.com/WuToDo/Ripple/blob/main/LICENSE)
+ */
 
+// What element will be applied on
 const selector = ".ripple";
 
 function tclick(element, onclick) {
     var touchable = true;
-    element.addEventListener('touchstart', function (e) {
+    element.addEventListener('touchstart', function(e) {
         touchable = false;
         onclick.call(this, e);
     });
 
-    element.addEventListener('mousedown', function (e) {
+    element.addEventListener('mousedown', function(e) {
         if (touchable) {
             onclick.call(this, e);
         }
@@ -21,10 +22,10 @@ function tclick(element, onclick) {
     });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
     const allRippleElements = document.querySelectorAll(selector);
 
-    allRippleElements.forEach(function (rippleElement) {
+    allRippleElements.forEach(function(rippleElement) {
         rippleElement.style.cssText += `
            position: relative;
           -webkit-tap-highlight-color: transparent;
@@ -37,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
             createRipple(ev);
         });
 
-        function createRipple(event,) {
+        function createRipple(event, ) {
             var centered = false;
             if (rippleElement.hasAttribute('rpl-center')) {
                 centered = true;
@@ -90,10 +91,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 ripple.style.left = `${x}px`;
                 ripple.style.top = `${y}px`;
             }
-
-
             var container = document.createElement('span');
-            container.style.cssText = `
+            container.style.cssText += `
               border-radius: inherit;
     position: absolute;
     width: 100%;
@@ -107,34 +106,30 @@ document.addEventListener("DOMContentLoaded", function () {
             rippleElement.appendChild(container);
 
             let anim = ripple.animate(
-                [
-                    { width: size + 'px', height: size + 'px' },
-                ],
-                {
+                [{
+                    width: size + 'px',
+                    height: size + 'px'
+                }, ], {
                     duration: 225,
                     easing: "cubic-bezier(0,.58,.32,.99)",
                     fill: "forwards"
                 });
-
             function removeRipple() {
-
                 anim.finished.then(() => {
                     let fadeOutAnimation = container.animate(
-                        [
-                            { opacity: '0' },
-                        ],
-                        {
+                        [{
+                            opacity: '0'
+                        }, ], {
                             duration: 300,
                             easing: "ease",
                             fill: "forwards"
                         });
 
-                    fadeOutAnimation.onfinish = function () {
+                    fadeOutAnimation.onfinish = function() {
                         container.remove();
                     };
                 });
             }
-
             if (event.touches) {
                 rippleElement.addEventListener("touchend", removeRipple);
                 rippleElement.addEventListener("touchcancel", removeRipple);
