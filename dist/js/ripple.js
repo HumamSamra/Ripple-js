@@ -1,7 +1,7 @@
 /*!
  * Ripple js v1.0.0 (https://humamsamra.github.io/ripple/)
  * Copyright 2022-2023 The Ripple js Author (WuToDo)
- * Licensed under MIT (https://github.com/WuToDo/Ripple/blob/main/LICENSE)
+ * Licensed under MIT (https://github.com/HumamSamra/Ripple/blob/main/LICENSE)
  */
 
 // What element will be applied on
