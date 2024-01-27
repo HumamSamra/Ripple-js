@@ -1,5 +1,5 @@
 /*!
- * Ripple js v1.0.0 (https://wutodo.github.io/ripple/)
+ * Ripple js v1.0.0 (https://humamsamra.github.io/ripple/)
  * Copyright 2022-2023 The Ripple js Author (WuToDo)
  * Licensed under MIT (https://github.com/WuToDo/Ripple/blob/main/LICENSE)
  */
